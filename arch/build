@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+TAG="$1"
+
+if [ ! -e root.x86_64 ]; then
+    curl https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.01.01-x86_64.tar.gz | tar xpz
+fi
+
+docker build --squash -t godarch/arch .
+docker tag godarch/arch godarch/arch:$TAG
