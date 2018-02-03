@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+if [ ! -e root.x86_64 ]; then
+    mkdir root.x86_64
+    sudo debootstrap stable root.x86_64 http://deb.debian.org/debian/
+fi
+
+docker build --squash -t godarch/debian .
+docker push godarch/debian
