@@ -1,5 +1,7 @@
 sudo: required
 dist: xenial
+branches:
+  - master
 services:
   - docker
 go_import_path: github.com/pauldotknopf/darch
@@ -7,4 +9,4 @@ before_install:
   - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
   - sudo service docker restart
 script:
-  - make ci LOGIN_USERNAME=$DOCKER_LOGIN_USERNAME LOGIN_PASSWORD=$DOCKER_LOGIN_PASSWORD TAG=`date +"%Y-%m-%d-%H%M%S"`
+  - sudo make ci LOGIN_USERNAME=$DOCKER_LOGIN_USERNAME LOGIN_PASSWORD=$DOCKER_LOGIN_PASSWORD TAG=`date +"%Y-%m-%d-%H%M%S"`
