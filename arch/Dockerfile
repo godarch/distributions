@@ -1,6 +1,6 @@
 FROM scratch
 
-ADD root.x86_64 /
+ADD root.tar.gz /
 
 # # Add our cpio hooks to be used when building the image.
 # TODO: Make this an AUR package? or a pkg.tar.gz?

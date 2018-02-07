@@ -3,8 +3,17 @@ set -e
 
 TAG="$1"
 
-if [ ! -e root.x86_64 ]; then
-    curl https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.01.01-x86_64.tar.gz | tar xpz
+if [ ! -e arch.tar.gz ]; then
+    curl -o arch.tar.gz  https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.02.01-x86_64.tar.gz
+fi
+
+if [ ! -e root.tar.gz ]; then
+    rm -rf root.x86_64
+    tar xpzf arch.tar.gz
+    pushd root.x86_64
+    tar -czpf ../root.tar.gz *
+    popd
+    rm -rf root.x86_64
 fi
 
 docker build --squash -t godarch/arch .
