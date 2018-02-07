@@ -7,6 +7,7 @@ if [ ! -e arch.tar.gz ]; then
     curl -o arch.tar.gz  https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.02.01-x86_64.tar.gz
 fi
 
+# Remove the trailing "/root.x86_64" from the base image.
 if [ ! -e root.tar.gz ]; then
     rm -rf root.x86_64
     tar xpzf arch.tar.gz
