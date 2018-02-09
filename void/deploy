@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+TAG="$1"
+
+docker push godarch/void:latest
+docker push godarch/void:$TAG
+
+docker push godarch/void-musl:latest
+docker push godarch/void-musl:$TAG
