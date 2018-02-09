@@ -8,7 +8,7 @@ xbps-install -y squashfs-tools
 mkdir /extract
 
 # Build/copy all files to extract directory
-mksquashfs / /extract/rootfs.squash -e /extract -e /sys -e /proc
+mksquashfs / /extract/rootfs.squash -e /extract -e /sys -e /proc -e /dev
 KERNEL=`find /boot -name "vmlinuz-*"`
 INITRAMFS=`find /boot -name "initramfs-*"`
 cp $KERNEL /extract/vmlinuz
