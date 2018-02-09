@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 # Load some common helper commands.
 type getarg >/dev/null 2>&1 || . /lib/dracut-lib.sh
 command -v unpack_archive >/dev/null || . /lib/img-lib.sh
