@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-if [ ! -e root.x86_64 ]; then
-    mkdir root.x86_64
-    curl https://repo.voidlinux.eu/live/current/void-x86_64-musl-ROOTFS-20171007.tar.xz | tar xJp -C root.x86_64
+if [ ! -e root.tar.xz ]; then
+    curl -o root.tar.xz https://repo.voidlinux.eu/live/current/void-x86_64-ROOTFS-20171007.tar.xz
 fi
 
-docker build -t godarch/void .
+if [ ! -e root-musl.tar.xz ]; then
+    curl -o root-musl.tar.xz https://repo.voidlinux.eu/live/current/void-x86_64-musl-ROOTFS-20171007.tar.xz
+fi
+
+docker build --squash -t godarch/void .
 docker push godarch/void
+
+docker build --squash -f Dockerfile.musl -t godarch/void-musl .
+docker push godarch/void-musl

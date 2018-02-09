@@ -1,1 +1,5 @@
 arch/root.x86_64/
+arch/arch.tar.gz
+arch/root.tar.gz
+void/root-musl.tar.xz
+void/root.tar.xz
