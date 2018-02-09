@@ -18,6 +18,3 @@ if [ -e "$darch_hooks_dir" ]; then
         /usr/bin/env sh -c ". $DARCH_HOOK_DIR/hook && run"
     done
 fi
-
-warn "Failed to mount overlay to /run/rootfsbase"
-emergency_shell
