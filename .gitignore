@@ -3,3 +3,4 @@ arch/arch.tar.gz
 arch/root.tar.gz
 void/root-musl.tar.xz
 void/root.tar.xz
+ubuntu/artful/root.tar.gz

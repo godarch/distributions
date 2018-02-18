@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+TAG="$1"
+
+if [ ! -e root.tar.gz ]; then
+    curl -o root.tar.gz http://cdimage.ubuntu.com/ubuntu-base/releases/artful/release/ubuntu-base-17.10-base-amd64.tar.gz
+fi
+
+docker build --squash -t godarch/ubuntu .
+docker tag godarch/ubuntu godarch/ubuntu:$TAG
