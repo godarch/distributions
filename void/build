@@ -14,5 +14,5 @@ fi
 docker build --squash -t godarch/void .
 docker tag godarch/void godarch/void:$TAG
 
-#docker build --squash -f Dockerfile.musl -t godarch/void-musl .
-#docker tag godarch/void-musl godarch/void-musl:$TAG
+docker build --squash -f Dockerfile.musl -t godarch/void-musl .
+docker tag godarch/void-musl godarch/void-musl:$TAG
