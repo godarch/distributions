@@ -4,7 +4,7 @@ set -e
 TAG="$1"
 
 if [ ! -e arch.tar.gz ]; then
-    curl -o arch.tar.gz -L https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.07.01-x86_64.tar.gz
+    curl -o arch.tar.gz -L https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.09.01-x86_64.tar.gz
 fi
 
 # Remove the trailing "/root.x86_64" from the base image.
