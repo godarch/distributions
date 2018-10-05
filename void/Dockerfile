@@ -2,7 +2,8 @@ FROM scratch
 
 ADD root.tar.xz /
 
-RUN xbps-install -y -S -R http://repo.voidlinux.eu/current
+RUN echo "repository=http://alpha.us.repo.voidlinux.org/current" > /etc/xbps.d/00-repository-main.conf
+RUN xbps-install -y -S -R http://alpha.us.repo.voidlinux.org/current
 RUN xbps-install -y base-system
 RUN xbps-install -y grub-x86_64-efi
 RUN xbps-install -y lvm2
