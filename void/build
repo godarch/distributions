@@ -7,12 +7,5 @@ if [ ! -e root.tar.xz ]; then
     curl -L -o root.tar.xz http://alpha.de.repo.voidlinux.org/live/current/void-x86_64-ROOTFS-20171007.tar.xz
 fi
 
-if [ ! -e root-musl.tar.xz ]; then
-    curl -L -o root-musl.tar.xz http://alpha.de.repo.voidlinux.org/live/current/void-x86_64-musl-ROOTFS-20171007.tar.xz
-fi
-
 docker build --squash -t godarch/void .
 docker tag godarch/void godarch/void:$TAG
-
-docker build --squash -f Dockerfile.musl -t godarch/void-musl .
-docker tag godarch/void-musl godarch/void-musl:$TAG
