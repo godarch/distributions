@@ -22,5 +22,5 @@ deploy:
 	@echo "deplying void"
 	@cd void && ./deploy $(TAG)
 	@echo "deplying debian"
-	@cd debian && ./deply $(TAG)
+	@cd debian && ./deploy $(TAG)
 ci: build deploy
