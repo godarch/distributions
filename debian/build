@@ -12,7 +12,7 @@ if [ ! -e root.stretch.x86_64 ]; then
 fi
 
 if [ ! -e root.testing.x86_64.tar.gz ]; then
-    cd root.x86_64
+    cd root.testing.x86_64
     tar -czpf ../root.testing.x86_64.tar.gz *
     cd ..
 fi
