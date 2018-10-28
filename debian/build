@@ -1,17 +1,31 @@
 #!/usr/bin/env bash
 set -e
 
-if [ ! -e root.x86_64 ]; then
-    mkdir root.x86_64
-    debootstrap --include=linux-image-amd64 testing root.x86_64 http://deb.debian.org/debian/
+if [ ! -e root.testing.x86_64 ]; then
+    mkdir root.x86_64.testing
+    debootstrap --include=linux-image-amd64 testing root.testing.x86_64 http://deb.debian.org/debian/
 fi
 
-if [ ! -e root.x86_64.tar.gz ]; then
+if [ ! -e root.stretch.x86_64 ]; then
+    mkdir root.stretch.x86_64.stretch
+    debootstrap --include=linux-image-amd64 stretch root.stretch.x86_64 http://deb.debian.org/debian/
+fi
+
+if [ ! -e root.testing.x86_64.tar.gz ]; then
     cd root.x86_64
-    tar -czpf ../root.x86_64.tar.gz *
+    tar -czpf ../root.testing.x86_64.tar.gz *
     cd ..
 fi
 
-docker build --squash -t godarch/debian:latest .
+if [ ! -e root.stretch.x86_64.tar.gz ]; then
+    cd root.stretch.x86_64
+    tar -czpf ../root.stretch.x86_64.tar.gz *
+    cd ..
+fi
+
+docker build --squash -t godarch/debian:latest -f Dockerfile.testing .
 docker tag godarch/debian:latest godarch/debian:testing
 docker tag godarch/debian:testing godarch/debian:testing-$TAG
+
+docker build --squash -t godarch/debian:stretch -f Dockerfile.stretch .
+docker tag godarch/debian:stretch godarch/debian:stretch-$TAG

@@ -6,3 +6,6 @@ TAG="$1"
 docker push godarch/debian:latest
 docker push godarch/debian:testing
 docker push godarch/debian:testing-$TAG
+
+docker push godarch/debian:stretch
+docker push godarch/debian:stretch-$TAG

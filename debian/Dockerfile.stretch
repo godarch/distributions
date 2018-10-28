@@ -1,6 +1,6 @@
 FROM scratch
 
-ADD root.x86_64.tar.gz /
+ADD root.stretch.x86_64.tar.gz /
 
 ADD helpers/darch-extract /darch-extract
 ADD helpers/darch-prepare /darch-prepare
