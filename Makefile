@@ -8,19 +8,19 @@ CACHED=$(TAG)
 default: build
 
 build:
-	@echo "building arch"
-	@cd arch && ./build $(TAG)
-	@echo "building void"
-	@cd void && ./build $(TAG)
+	#@echo "building arch"
+	#@cd arch && ./build $(TAG)
+	#@echo "building void"
+	#@cd void && ./build $(TAG)
 	@echo "building debian"
 	@cd debian && ./build $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
-	@echo "deplying arch"
-	@cd arch && ./deploy $(TAG)
-	@echo "deplying void"
-	@cd void && ./deploy $(TAG)
+	#@echo "deplying arch"
+	#@cd arch && ./deploy $(TAG)
+	#@echo "deplying void"
+	#@cd void && ./deploy $(TAG)
 	@echo "deplying debian"
 	@cd debian && ./deploy $(TAG)
 ci: build deploy
