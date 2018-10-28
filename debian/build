@@ -2,7 +2,7 @@
 set -e
 
 if [ ! -e root.testing.x86_64 ]; then
-    mkdir root.x86_64.testing
+    mkdir root.testing.x86_64
     debootstrap --include=linux-image-amd64 testing root.testing.x86_64 https://deb.debian.org/debian/
 fi
 
