@@ -12,6 +12,8 @@ build:
 	@cd arch && ./build $(TAG)
 	@echo "building void"
 	@cd void && ./build $(TAG)
+	@echo "building debian"
+	@cd debian && ./build $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
@@ -19,4 +21,6 @@ deploy:
 	@cd arch && ./deploy $(TAG)
 	@echo "deplying void"
 	@cd void && ./deploy $(TAG)
+	@echo "deplying debian"
+	@cd debian && ./deply $(TAG)
 ci: build deploy

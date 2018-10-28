@@ -3,8 +3,15 @@ set -e
 
 if [ ! -e root.x86_64 ]; then
     mkdir root.x86_64
-    sudo debootstrap stable root.x86_64 http://deb.debian.org/debian/
+    debootstrap --include=linux-image-amd64 testing root.x86_64 http://deb.debian.org/debian/
 fi
 
-docker build --squash -t godarch/debian .
-docker push godarch/debian
+if [ ! -e root.x86_64.tar.gz ]; then
+    cd root.x86_64
+    tar -czpf ../root.x86_64.tar.gz *
+    cd ..
+fi
+
+docker build --squash -t godarch/debian:latest .
+docker tag godarch/debian:latest godarch/debian:testing
+docker tag godarch/debian:testing godarch/debian:testing-$TAG

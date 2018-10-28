@@ -1,18 +1,19 @@
 FROM scratch
 
-ADD root.x86_64 /
+ADD root.x86_64.tar.gz /
 
 ADD helpers/darch-extract /darch-extract
 ADD helpers/darch-prepare /darch-prepare
 ADD helpers/darch-runrecipe /darch-runrecipe
 ADD helpers/darch-teardown /darch-teardown
-ADD hooks/darch /etc/initramfs-tools/hooks/darch
 
-# Update packages
+# Add the Darch repo for initramfs tools.
+RUN apt-get -y install curl gnupg software-properties-common
+RUN curl -L https://raw.githubusercontent.com/godarch/debian-repo/master/key.pub | apt-key add -
+RUN add-apt-repository 'deb https://raw.githubusercontent.com/godarch/debian-repo/master/darch testing main'
 RUN apt-get update
-
-# Install the kernel and initramfs
-RUN apt-get -y --allow-unauthenticated install linux-image-amd64
+RUN apt-get -y install darch-initramfs-tools
+RUN update-initramfs -u
 
 # Clean up
 RUN apt-get clean

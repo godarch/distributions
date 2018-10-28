@@ -3,3 +3,5 @@ arch/arch.tar.gz
 arch/root.tar.gz
 void/root-musl.tar.xz
 void/root.tar.xz
+debian/root.x86_64
+debian/root.x86_64.tar.gz

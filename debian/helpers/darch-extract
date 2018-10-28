@@ -15,5 +15,5 @@ cp $KERNEL /extract/vmlinuz
 cp $INITRAMFS /extract/init.img
 
 # Stamp a json file which tells people what files are for what.
-json='{"kernel": "vmlinuz", "initramfs": "init.img", "rootfs": "rootfs.squash"}'
+json='{"kernel": "vmlinuz", kernelparams: "boot=darch", "initramfs": "init.img", "rootfs": "rootfs.squash"}'
 echo $json > /extract/image.json
