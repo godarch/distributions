@@ -3,12 +3,12 @@ set -e
 
 if [ ! -e root.testing.x86_64 ]; then
     mkdir root.x86_64.testing
-    debootstrap --include=linux-image-amd64 testing root.testing.x86_64 http://deb.debian.org/debian/
+    debootstrap --include=linux-image-amd64 testing root.testing.x86_64 https://deb.debian.org/debian/
 fi
 
 if [ ! -e root.stretch.x86_64 ]; then
     mkdir root.stretch.x86_64.stretch
-    debootstrap --include=linux-image-amd64 stretch root.stretch.x86_64 http://deb.debian.org/debian/
+    debootstrap --include=linux-image-amd64 stretch root.stretch.x86_64 https://deb.debian.org/debian/
 fi
 
 if [ ! -e root.testing.x86_64.tar.gz ]; then
