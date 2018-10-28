@@ -2,6 +2,8 @@ FROM scratch
 
 ADD root.testing.x86_64.tar.gz /
 
+RUN apt-get update
+
 ADD helpers/darch-extract /darch-extract
 ADD helpers/darch-prepare /darch-prepare
 ADD helpers/darch-runrecipe /darch-runrecipe
