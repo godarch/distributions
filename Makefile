@@ -12,8 +12,10 @@ build:
 	#@cd arch && ./build $(TAG)
 	#@echo "building void"
 	#@cd void && ./build $(TAG)
-	@echo "building debian"
-	@cd debian && ./build $(TAG)
+	#@echo "building debian"
+	#@cd debian && ./build $(TAG)
+	@echo "building ubuntu cosmic"
+	@cd ubuntu/cosmic && ./build $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
@@ -21,6 +23,8 @@ deploy:
 	#@cd arch && ./deploy $(TAG)
 	#@echo "deplying void"
 	#@cd void && ./deploy $(TAG)
-	@echo "deplying debian"
-	@cd debian && ./deploy $(TAG)
+	#@echo "deplying debian"
+	#@cd debian && ./deploy $(TAG)
+	@echo "deplying ubuntu cosmic"
+	@cd ubuntu/cosmic && ./deploy $(TAG)
 ci: build deploy
