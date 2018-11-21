@@ -4,7 +4,7 @@ set -e
 TAG="$1"
 
 if [ ! -e root.tar.xz ]; then
-    curl -L -o root.tar.xz http://alpha.de.repo.voidlinux.org/live/current/void-x86_64-ROOTFS-20171007.tar.xz
+    curl -L -o root.tar.xz http://alpha.de.repo.voidlinux.org/live/current/void-x86_64-ROOTFS-20181111.tar.xz
 fi
 
 docker build --squash -t godarch/void .
