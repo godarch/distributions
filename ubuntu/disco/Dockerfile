@@ -2,7 +2,7 @@ FROM scratch
 
 ADD root.x86_64.tar.gz /
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 # Some common packages
 RUN apt-get -y install lvm2
