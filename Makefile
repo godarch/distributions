@@ -14,6 +14,8 @@ build:
 	@cd void && ./build $(TAG)
 	@echo "building debian"
 	@cd debian && ./build $(TAG)
+	@echo "building ubuntu bionic"
+	@cd ubuntu/bionic && ./build $(TAG)
 	@echo "building ubuntu cosmic"
 	@cd ubuntu/cosmic && ./build $(TAG)
 	@echo "building ubuntu disco"
@@ -27,6 +29,8 @@ deploy:
 	@cd void && ./deploy $(TAG)
 	@echo "deplying debian"
 	@cd debian && ./deploy $(TAG)
+	@echo "deplying ubuntu bionic"
+	@cd ubuntu/bionic && ./deploy $(TAG)
 	@echo "deplying ubuntu cosmic"
 	@cd ubuntu/cosmic && ./deploy $(TAG)
 	@echo "deplying ubuntu disco"

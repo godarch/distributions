@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+# TODO: Only install if needed, and if we install it, remove it when we are done.
+apt-get install -y squashfs-tools
+
+# Make the directory that will be extracted
+mkdir /extract
+
+# Build/copy all files to extract directory
+mksquashfs / /extract/rootfs.squash -e /extract -e /sys -e /proc
+KERNEL=`find /boot -name "vmlinuz*generic"`
+INITRAMFS=`find /boot -name "initrd*generic"`
+cp $KERNEL /extract/vmlinuz
+cp $INITRAMFS /extract/init.img
+
+# Stamp a json file which tells people what files are for what.
+json='{"kernel": "vmlinuz", "kernelparams": "boot=darch root=dummy", "initramfs": "init.img", "rootfs": "rootfs.squash", "nodoublemount": false}'
+echo $json > /extract/image.json
