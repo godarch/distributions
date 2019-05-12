@@ -18,8 +18,6 @@ build:
 	@cd ubuntu/bionic && ./build $(TAG)
 	@echo "building ubuntu cosmic"
 	@cd ubuntu/cosmic && ./build $(TAG)
-	@echo "building ubuntu disco"
-	@cd ubuntu/disco && ./build $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
@@ -33,6 +31,4 @@ deploy:
 	@cd ubuntu/bionic && ./deploy $(TAG)
 	@echo "deplying ubuntu cosmic"
 	@cd ubuntu/cosmic && ./deploy $(TAG)
-	@echo "deplying ubuntu disco"
-	@cd ubuntu/disco && ./deploy $(TAG)
 ci: build deploy

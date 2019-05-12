@@ -2,7 +2,8 @@ FROM scratch
 
 ADD root.x86_64.tar.gz /
 
-RUN apt-get update && apt-get upgrade -y
+# The --with-new-pkgs will also update the kernel as well.
+RUN apt-get update && apt-get --with-new-pkgs upgrade -y
 
 # Some common packages
 RUN apt-get -y install lvm2
