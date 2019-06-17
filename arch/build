@@ -4,8 +4,7 @@ set -e
 TAG="$1"
 
 if [ ! -e arch.tar.gz ]; then
-    DATE=`date +%Y.%m.%d`
-    curl -o arch.tar.gz -L https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-${DATE}-x86_64.tar.gz
+    curl -o arch.tar.gz -L https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-$(date +%Y.%m).01-x86_64.tar.gz
 fi
 
 # Remove the trailing "/root.x86_64" from the base image.
