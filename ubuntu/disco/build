@@ -7,9 +7,9 @@ if [ ! -e root.x86_64 ]; then
 fi
 
 if [ ! -e root.x86_64.tar.gz ]; then
-    cd root.x86_64
+    pushd root.x86_64
     tar -czpf ../root.x86_64.tar.gz *
-    cd ..
+    popd 
 fi
 
 docker build --squash -t godarch/ubuntu:disco .
