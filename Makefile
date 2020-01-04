@@ -13,9 +13,11 @@ build:
 	@echo "building debian"
 	@cd debian && ./build $(TAG)
 	@echo "building ubuntu bionic"
-	@cd ubuntu/bionic && ./build $(TAG)
+	@cd ubuntu && ./build bionic $(TAG)
 	@echo "building ubuntu cosmic"
-	@cd ubuntu/cosmic && ./build $(TAG)
+	@cd ubuntu && ./build cosmic $(TAG)
+	@echo "building ubuntu disco"
+	@cd ubuntu && ./build disco $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
