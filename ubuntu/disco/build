@@ -3,7 +3,7 @@ set -e
 
 if [ ! -e root.x86_64 ]; then
     mkdir root.x86_64
-    debootstrap --include=linux-image-generic disco root.x86_64 http://archive.ubuntu.com/ubuntu/
+    debootstrap --include=linux-image-generic,grub-efi $1 root.x86_64 http://archive.ubuntu.com/ubuntu/
 fi
 
 if [ ! -e root.x86_64.tar.gz ]; then
@@ -12,5 +12,5 @@ if [ ! -e root.x86_64.tar.gz ]; then
     popd 
 fi
 
-docker build --squash -t godarch/ubuntu:disco .
-docker tag godarch/ubuntu:disco godarch/ubuntu:disco-$TAG
+docker build --squash -t godarch/ubuntu:$1 .
+docker tag godarch/ubuntu:disco godarch/ubuntu:$1-$TAG
