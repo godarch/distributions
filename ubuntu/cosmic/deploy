@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-TAG="$1"
-
-docker push godarch/ubuntu:cosmic
-docker push godarch/ubuntu:cosmic-$TAG
-docker push godarch/ubuntu:latest

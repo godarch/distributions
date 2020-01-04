@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+# Save distro specific files since this runs multiple times
+if [ ! -e _build/$1.root.x86_64 ]; then
+    mkdir -p _build/$1.root.x86_64
+    debootstrap --include=linux-image-generic,grub-efi $1 _build/$1.root.x86_64 http://archive.ubuntu.com/ubuntu/
+fi
+
+if [ ! -e _build/$1.root.x86_64.tar.gz ]; then
+    pushd _build/$1.root.x86_64
+    tar -czpf ../$1.root.x86_64.tar.gz *
+    popd 
+fi
+
+# Take the current distro to build and copy it to the file Docker expects when building
+cp _build/$1.root.x86_64.tar.gz root.x86_64.tar.gz
+
+docker build --squash -t godarch/ubuntu:$1 .
+docker tag godarch/ubuntu:disco godarch/ubuntu:$1-$TAG
