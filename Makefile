@@ -18,6 +18,8 @@ build:
 	@cd ubuntu && ./build cosmic $(TAG)
 	@echo "building ubuntu disco"
 	@cd ubuntu && ./build disco $(TAG)
+	@echo "building ubuntu eoan"
+	@cd ubuntu && ./build eoan $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
