@@ -17,4 +17,4 @@ fi
 cp _build/$1.root.x86_64.tar.gz root.x86_64.tar.gz
 
 docker build --squash -t godarch/ubuntu:$1 .
-docker tag godarch/ubuntu:disco godarch/ubuntu:$1-$TAG
+docker tag godarch/ubuntu:$1 godarch/ubuntu:$1-$TAG
