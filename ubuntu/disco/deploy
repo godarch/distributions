@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-TAG="$1"
-
-docker push godarch/ubuntu:disco
-docker push godarch/ubuntu:disco-$TAG
