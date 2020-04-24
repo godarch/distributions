@@ -1,0 +1,21 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Build
+      env:
+        DOCKER_LOGIN_USERNAME: ${{ secrets.DOCKER_LOGIN_USERNAME }}
+        DOCKER_LOGIN_PASSWORD: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+      run: |
+        make ci LOGIN_USERNAME=$DOCKER_LOGIN_USERNAME LOGIN_PASSWORD=$DOCKER_LOGIN_PASSWORD TAG=`date +"%Y-%m-%d-%H%M%S"`
