@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+if [ ! -e root.x86_64 ]; then
+    mkdir root.x86_64
+    debootstrap --include=linux-image-generic focal root.x86_64 http://archive.ubuntu.com/ubuntu/
+fi
+
+if [ ! -e root.x86_64.tar.gz ]; then
+    cd root.x86_64
+    tar -czpf ../root.x86_64.tar.gz *
+    cd ..
+fi
+
+docker build --squash -t godarch/ubuntu:focal .
+docker tag godarch/ubuntu:focal godarch/ubuntu:focal-$TAG

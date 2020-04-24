@@ -12,6 +12,8 @@ build:
 	@cd arch && ./build $(TAG)
 	@echo "building ubuntu bionic"
 	@cd ubuntu/bionic && ./build $(TAG)
+	@echo "building ubuntu focal"
+	@cd ubuntu/focal && ./build $(TAG)
 deploy:
 	@echo "logging into docker"
 	@docker login -u $(LOGIN_USERNAME) -p $(LOGIN_PASSWORD)
@@ -19,4 +21,6 @@ deploy:
 	@cd arch && ./deploy $(TAG)
 	@echo "deplying ubuntu bionic"
 	@cd ubuntu/bionic && ./deploy $(TAG)
+	@echo "deplying ubuntu focal"
+	@cd ubuntu/focal && ./deploy $(TAG)
 ci: build deploy
