@@ -18,7 +18,7 @@ RUN apt-get -y install curl gnupg software-properties-common
 RUN curl -L https://raw.githubusercontent.com/godarch/debian-repo/master/key.pub | apt-key add -
 RUN add-apt-repository 'deb https://raw.githubusercontent.com/godarch/debian-repo/master/darch testing main'
 RUN apt-get update
-RUN apt-get -y install darch-initramfs-tools
+RUN apt-get -y install darch-initramfs-tools initramfs-tools
 RUN update-initramfs -u
 
 # Clean up
